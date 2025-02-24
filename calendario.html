@@ -5,16 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario</title>
     <link rel="stylesheet" href="calendario.css">
-    <script src="calendario.js" defer></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="navigation">
-            <ion-icon name="arrow-back"></ion-icon>
-            <h1 id="mes-actual">Julio</h1>
-            <ion-icon name="arrow-forward"></ion-icon>
+            <ion-icon id="prev" name="arrow-back"></ion-icon>
+            <h1 id="month-year"></h1>
+            <ion-icon id="next" name="arrow-forward"></ion-icon>
+        </div>
+        <div class="calendar">
+            <div class="weekdays">
+                <div>Dom</div>
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mie</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sab</div>
+            </div>
+            <div id="days"></div>
         </div>
     </div>
+    <script src="calendario.js"></script>
 </body>
 </html>
