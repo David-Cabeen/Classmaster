@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f0f4f3;
+  overflow: hidden;
 }
 
 .container {
@@ -221,4 +222,69 @@ select#opciones option:disabled {
 
 .sign-in a:hover::before {
 	width: 91%;
+}
+
+#feedback-window {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  background-color: #f0f4f3;
+  position: absolute;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+  top: .5rem;
+  right: -20rem;
+  width: 21%;
+  height: 16%;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: right 0.3s ease-in-out;
+}
+
+#feedback-close{
+  color: #7a7a7a;
+  scale: 1.8; 
+  padding: .5rem;
+  position: absolute;
+  top: .25rem;
+  right: .5rem;
+  transition: transform 0.2s, color 0.2s;
+}
+
+#feedback-window h3 {
+  position: absolute;
+  top: 0;
+  background-color: #c9cccb;
+  width: 100%;
+  height: 2.5rem;;
+}
+
+#feedback-window span {
+  position: absolute;
+  top: .5rem;
+  left: .3rem;
+}
+
+#overlay {
+  display: none;
+  opacity: 0;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: opacity 0.3s ease-in-out;
+}
+
+#feedback {
+  color: rgb(232, 79, 79);
+  margin: .5rem;
+  translate: 0 30%;
+}
+
+#feedback-close:hover {
+  cursor: pointer;
+  color: rgb(232, 79, 79);
+  transform: scale(1.1);
 }
