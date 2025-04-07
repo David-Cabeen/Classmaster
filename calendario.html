@@ -9,13 +9,14 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
 </head>
 <body>
+    <div id="overlay"></div>
     <div class="container">
         <div class="navigation">
             <ion-icon id="prev" name="arrow-back"></ion-icon>
             <h1 id="month-year"></h1>
             <ion-icon id="next" name="arrow-forward"></ion-icon>
         </div>
-        <div class="calendar">
+        <div id="calendar">
             <div class="weekdays">
                 <div>Dom</div>
                 <div>Lun</div>
@@ -27,6 +28,24 @@
             </div>
             <div id="days"></div>
         </div>
+        <div id="events">
+            <div class="day-header">
+                <h1 id="day-number"></h1>
+                <ion-icon id="close" name="close"></ion-icon>
+                <p id="distance"></p>
+            </div>
+            <hr>
+            <h2>Eventos</h2>
+            <ul id="event-list"></ul>
+            <button id="event-adder">Añadir evento</button>
+        </div>
+    </div>
+    <div id="event-window">
+        <form id="event-form">
+            <input type="text" id="event-input" placeholder="Agregar evento" required />
+            <button type="submit">Añadir</button>
+            <ion-icon id="close-event" name="close"></ion-icon>
+        </form>
     </div>
     <script src="calendario.js"></script>
 </body>

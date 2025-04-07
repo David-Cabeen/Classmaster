@@ -18,8 +18,8 @@ body {
 }
 
 .container {
-    width: 1000px;
-    height: 550px;
+    width: 70%;
+    height: 80%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -27,7 +27,7 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
-    position: relative;
+    position: absolute;
 }
 
 .navigation {
@@ -43,17 +43,14 @@ body {
     font-size: 3rem;
 }
 
-.calendar {
-    border-radius: 10px;
+#calendar {
+    transition: width 0.3s;
     width: 100%;
     height: 75%;
     color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    translate: -50% 0%;
+    position: relative;
 }
 
 .weekdays, #days {
@@ -84,7 +81,9 @@ ion-icon {
     transition: scale 0.3s, filter 0.3s;
 }
 
-ion-icon:hover {
+ion-icon[name="arrow-forward"]:hover,
+ion-icon[name="arrow-back"]:hover,
+ion-icon[name="close"]:hover {
     scale: 1.1;
     filter: drop-shadow(0 0 10px rgb(0, 0, 0, 0.3));
 }
@@ -92,4 +91,130 @@ ion-icon:hover {
 #month-year {
     font-weight: bold;
     font-size: 2.2rem;
+}
+
+#events hr {
+    width: 100%;
+    height: 3px;
+    background-color: #ddd;
+    border: none;
+}
+
+#events {
+    display: block;
+    transition: translate 0.3s;
+    position: absolute;
+    width: 30%;
+    height: 85%;
+    bottom: 0;
+    right: 0;
+    translate: 100% 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+#day-number {
+    margin-top: .25rem;
+    margin-left: .25rem;
+}
+
+#distance {
+    margin: 0 .25rem;
+    translate: 0 -25%;
+}
+
+#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.8rem;
+    margin: .5rem;
+    border-radius: 0 0 0 15px;
+}
+
+#event-adder {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    background-color: hsl(196, 100%, 89%);
+    cursor: pointer;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    transition: scale 0.3s;
+}
+
+#event-adder:hover {
+    scale: 1.05;
+}
+
+#overlay {
+    display: none;
+    opacity: 0;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#event-window {
+    opacity: 0;
+    z-index: 200;
+    display: none;
+    transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+    position: fixed;
+    width: 60%;
+    height: 75%;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+}
+
+#close-event {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.8rem;
+    margin: .5rem;
+    border-radius: 0 0 0 15px;
+}
+
+#events h2 {
+    margin: .5rem;
+}
+
+#event-list {
+    margin: 1.5rem;
+    display: block;
+}
+
+ion-icon[name="trash-outline"] {
+    font-size: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: absolute;
+    right: .5rem;
+}
+ion-icon[name="trash-outline"]:hover {
+    color: red;
+}
+
+.li-delete {
+    transition: translate 0.3s;
+}
+
+.has-event::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: hsl(0, 60%, 53%);
+    border-radius: 50%;
 }
