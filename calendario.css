@@ -18,8 +18,8 @@ body {
 }
 
 .container {
-    width: 70%;
-    height: 80%;
+    width: 75%;
+    height: 90%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -46,7 +46,7 @@ body {
 #calendar {
     transition: width 0.3s;
     width: 100%;
-    height: 75%;
+    height: 100%;
     color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
@@ -61,12 +61,22 @@ body {
 }
 
 .weekdays div, #days div {
-    padding: 10px;
     border: 1px solid #dddddd;
+}
+
+#days div {
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    pointer-events: all;
 }
 
 #days div.fade {
     color: #bbb;
+    cursor: default;
+}
+
+.selected {
+    font-size: 2rem;
 }
 
 #days div.today {
@@ -110,7 +120,7 @@ ion-icon[name="close"]:hover {
     right: 0;
     translate: 100% 0;
     background-color: white;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #day-number {
@@ -176,13 +186,17 @@ ion-icon[name="close"]:hover {
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
 }
 
+#event-window h1 {
+    margin: 1rem;
+    text-align: center;
+}
+
 #close-event {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     margin: .5rem;
-    border-radius: 0 0 0 15px;
 }
 
 #events h2 {
@@ -200,21 +214,8 @@ ion-icon[name="trash-outline"] {
     cursor: pointer;
     transition: color 0.3s;
     position: absolute;
-    right: .5rem;
+    right: 0;
 }
 ion-icon[name="trash-outline"]:hover {
     color: red;
-}
-
-.li-delete {
-    transition: translate 0.3s;
-}
-
-.has-event::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: hsl(0, 60%, 53%);
-    border-radius: 50%;
 }
