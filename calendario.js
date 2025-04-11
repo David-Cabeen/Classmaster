@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     let currentDate = new Date();
     let today = new Date();
+
     // Renderizar el calendario
     function renderCalendar(date) {
         const year = date.getFullYear();
@@ -42,17 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 1; i <= lastDay; i++) {
             const dayDiv = document.createElement('div');
             dayDiv.textContent = i;
+
             if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
                 dayDiv.classList.add('today');
             }
-
-            // Verificar si el día tiene eventos
-            const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-            const events = JSON.parse(localStorage.getItem('events')) || {};
-            if (events[dateKey]) {
-                dayDiv.classList.add('has-event');
-            }
-
             daysContainer.appendChild(dayDiv);
         }
 
@@ -87,6 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             events.style.boxShadow = 'none';
         }, 300);
+        daysContainer.querySelectorAll('div').forEach(div => {
+            div.classList.remove('selected');
+        }
+        );
     });
 
     // Abrir ventana de eventos
@@ -100,6 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar.style.width = '70%';
             selectedDay.textContent = e.target.textContent + ' / ' + months[currentDate.getMonth()] + ' / ' + currentDate.getFullYear();
             distance.textContent = checkDistanceFromToday(currentDate.getDate(), selectedDay.textContent);
+            daysContainer.querySelectorAll('div').forEach(div => {
+                div.classList.remove('selected');
+            }
+            );
+            e.target.classList.add('selected');
             loadEvent(); // Cargar eventos para el día seleccionado
         }
     });
@@ -109,22 +112,24 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         let li = document.createElement('li');
         li.innerHTML = eventInput.value;
-        eventList.appendChild(li);
+
+        // Crear botón de eliminar
         let deleteButton = document.createElement('ion-icon');
         deleteButton.setAttribute('name', 'trash-outline');
-        li.appendChild(deleteButton);
         deleteButton.addEventListener('click', (e) => {
             const liElement = e.target.parentElement;
             liElement.style.transition = 'translate 0.3s ease';
             liElement.style.translate = '-100%';
             setTimeout(() => {
                 liElement.remove();
-                saveEvent(); // Guardar cambios después de eliminar
+                saveEvent();
             }, 300);
         });
-       
-         eventInput.value = '';
-         saveEvent();
+        li.appendChild(deleteButton);
+
+        eventList.appendChild(li);
+        saveEvent();
+        eventInput.value = '';
     });
 
     // Guardar eventos en localStorage
@@ -138,9 +143,20 @@ document.addEventListener('DOMContentLoaded', function () {
     function loadEvent() {
         const events = JSON.parse(localStorage.getItem('events')) || {};
         eventList.innerHTML = events[selectedDay.textContent] || '';
+
+        const deleteButtons = eventList.querySelectorAll('ion-icon[name="trash-outline"]');
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                const liElement = e.target.parentElement;
+                liElement.style.transition = 'translate 0.3s ease';
+                liElement.style.translate = '-100%';
+                setTimeout(() => {
+                    liElement.remove();
+                    saveEvent();
+                }, 300);
+            });
+        });
     }
-
-
 
     // Abrir ventana de añadir evento
     eventAdder.addEventListener('click', function () {
@@ -208,8 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectedDay[1] = 12;
                 break;
         }
-        console.log(selectedDay[1], currentDate.getMonth() + 1);
-        console.log(currentDate)
+        //console.log(selectedDay[1], currentDate.getMonth() + 1);
+        //console.log(currentDate)
         if (selectedDay[1] == currentDate.getMonth() + 1) {
             distance = parseInt(selectedDay[0]) - parseInt(today);
             return distanceCalc(distance);

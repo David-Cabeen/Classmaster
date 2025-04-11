@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&display=swap");
 
+@keyframes tween {
+    0% {
+        rotate: 0deg;
+    }
+    33.3% {
+        rotate: 1deg;
+    }
+    66.6% {
+        rotate: -1deg;
+    }
+    100% {
+        rotate: 0deg;
+    } 
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,16 +33,17 @@ body {
 }
 
 .container {
-    width: 75%;
-    height: 90%;
+    width: 80%;
+    height: 95%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    background-color: white;
     border-radius: 15px;
     overflow: hidden;
+    background-color: #eee;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
     position: absolute;
+    background: linear-gradient(to bottom right, #e8e8e8, #ddd);
 }
 
 .navigation {
@@ -51,6 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 0.5rem;
 }
 
 .weekdays, #days {
@@ -58,29 +75,47 @@ body {
     grid-template-columns: repeat(7, 1fr);
     width: 100%;
     text-align: center;
-}
-
-.weekdays div, #days div {
-    border: 1px solid #dddddd;
+    gap: .5rem;
 }
 
 #days div {
+    position: relative;
     cursor: pointer;
-    aspect-ratio: 1/1;
-    pointer-events: all;
+    aspect-ratio: 1;
+    transition: translate 0.3s, box-shadow 0.3s;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+#days div:hover {
+    translate: -2% -2%;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    
 }
 
 #days div.fade {
     color: #bbb;
     cursor: default;
+    translate: 0 0;
+    box-shadow: none;
 }
 
 .selected {
-    font-size: 2rem;
+    translate: -2% -2%;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    animation: tween ease-in-out 5s infinite;
 }
 
-#days div.today {
-    background-color: hsl(196, 100%, 89%);
+#days div.today::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 1;
+    margin: .5rem;
+    border-radius: 50%;
+    background-color: hsl(196, 100%, 50%);
 }
 
 ion-icon {
@@ -218,4 +253,16 @@ ion-icon[name="trash-outline"] {
 }
 ion-icon[name="trash-outline"]:hover {
     color: red;
+}
+
+#days div.has-event::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 1;
+    margin: .5rem;
+    border-radius: 50%;
+    background-color: hsl(126, 100%, 50%);
 }
