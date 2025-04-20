@@ -44,7 +44,17 @@
         <h1>Añadir evento</h1>
         <ion-icon id="close-event" name="close"></ion-icon> <hr>
         <form id="event-form">
-            <input type="text" id="event-input" placeholder="Agregar evento" required><button type="submit">Añadir</button></input>
+            <input type="text" id="event-input" placeholder="Título" required/> <br>
+            <textarea name="event-description" placeholder="Descripción" id="event-description"></textarea>
+            <fieldset>
+                <input type="radio" name="priority" id="normal" value="normal">
+                <label for="normal">Normal <ion-icon name="ellipse-outline"/></label>
+                <input type="radio" name="priority" id="important" value="important">
+                <label for="important">Importante <ion-icon name="ellipse-outline"/></label>
+                <input type="radio" name="priority" id="urgent" value="urgent">
+                <label for="urgent">Urgente <ion-icon name="ellipse-outline"/></label>
+            </fieldset>
+            <button type="submit">Añadir</button>
         </form>
     </div>
     <script src="calendario.js"></script>

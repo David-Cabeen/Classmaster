@@ -1,5 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&display=swap");
 
+:root {
+    --urgent-color: hsl(11, 80%, 65%);
+    --important-color: hsl(175, 40%, 45%);
+    --normal-color: hsl(255, 75%, 70%);
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+}
+
+@keyframes priority {
+    0% {
+        transform: perspective(100px) rotateX(var(0)) rotateZ(var(0));
+    }
+    25% {
+        transform: perspective(100px) rotateX(var(--rotateX)) rotateZ(var(--rotateY));
+    }
+    100% {
+        transform: perspective(100px) rotateX(var(0)) rotateZ(var(0));
+    }
+}
+
 @keyframes tween {
     0% {
         rotate: 0deg;
@@ -30,6 +50,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f0f4f3;
+    color: rgb(20, 20, 20);
 }
 
 .container {
@@ -49,7 +70,7 @@ body {
 .navigation {
     width: 100%;
     height: 15%;
-    background-color: rgb(120, 120, 120);
+    background-color: #889a99;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,9 +82,9 @@ body {
 
 #calendar {
     transition: width 0.3s;
-    width: 100%;
+    width: 65%;
     height: 100%;
-    color: rgb(0, 0, 0);
+    color: rgb(34, 34, 34);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -82,12 +103,12 @@ body {
     position: relative;
     cursor: pointer;
     aspect-ratio: 1;
-    transition: translate 0.3s, box-shadow 0.3s;
+    transition: translate 0.3s, box-shadow 0.3s, scale 0.3s;
     background-color: #eee;
     border-radius: 2px;
 }
 
-#days div:hover {
+#days > div:hover {
     translate: -2% -2%;
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
     
@@ -102,6 +123,7 @@ body {
 
 .selected {
     translate: -2% -2%;
+    scale: 1.02;
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
     animation: tween ease-in-out 5s infinite;
 }
@@ -115,7 +137,7 @@ body {
     aspect-ratio: 1;
     margin: .5rem;
     border-radius: 50%;
-    background-color: hsl(196, 100%, 50%);
+    background-color: hsl(220, 70%, 70%);
 }
 
 ion-icon {
@@ -126,9 +148,7 @@ ion-icon {
     transition: scale 0.3s, filter 0.3s;
 }
 
-ion-icon[name="arrow-forward"]:hover,
-ion-icon[name="arrow-back"]:hover,
-ion-icon[name="close"]:hover {
+ion-icon:hover:is([name="arrow-forward"], [name="arrow-back"], [name="close"]) {
     scale: 1.1;
     filter: drop-shadow(0 0 10px rgb(0, 0, 0, 0.3));
 }
@@ -149,7 +169,7 @@ ion-icon[name="close"]:hover {
     display: block;
     transition: translate 0.3s;
     position: absolute;
-    width: 30%;
+    width: 33%;
     height: 85%;
     bottom: 0;
     right: 0;
@@ -182,7 +202,7 @@ ion-icon[name="close"]:hover {
     bottom: 0;
     right: 0;
     margin: 1rem;
-    background-color: hsl(196, 100%, 89%);
+    background-color: #76a1ea;
     cursor: pointer;
     padding: 1rem;
     border: none;
@@ -201,11 +221,12 @@ ion-icon[name="close"]:hover {
     width: 100%;
     position: fixed;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.4);
     transition: opacity 0.3s ease-in-out;
 }
 
 #event-window {
+    overflow: hidden;
     opacity: 0;
     z-index: 200;
     display: none;
@@ -216,7 +237,7 @@ ion-icon[name="close"]:hover {
     top: 55%;
     left: 50%;
     translate: -50% -50%;
-    background-color: white;
+    background-color: #f4f4f4;
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
 }
@@ -238,25 +259,43 @@ ion-icon[name="close"]:hover {
     margin: .5rem;
 }
 
+#event-list div ion-icon {
+    margin-top: .5rem;
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#event-list div{
+    position: relative;
+    border-radius: 5px;
+    height: 25%;
+    width: 95%;
+    margin-bottom: .5rem;
+}
+
+
+#event-list div p {
+    margin: 0 .5rem;
+}
+
+#event-list div h3 {
+    margin: .5rem;
+}
+
 #event-list {
-    margin: 1.5rem;
+    margin: 0 .5rem;
+    height: 65%;
     display: block;
 }
 
-ion-icon[name="trash-outline"] {
-    font-size: 1rem;
-    margin-left: 1rem;
-    cursor: pointer;
-    transition: color 0.3s;
-    position: absolute;
-    right: 0;
-}
 ion-icon[name="trash-outline"]:hover {
     color: red;
 }
 
-#days div.has-event::before {
-    content: '';
+#days div.has-event > div {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -264,5 +303,145 @@ ion-icon[name="trash-outline"]:hover {
     aspect-ratio: 1;
     margin: .5rem;
     border-radius: 50%;
-    background-color: hsl(126, 100%, 50%);
+    transition: scale 0.2s;
+}
+
+#days div.has-event.urgent > div {
+    background-color: var(--urgent-color);
+}
+#days div.has-event.important > div {
+    background-color: var(--important-color);
+}
+#days div.has-event.normal > div {
+    background-color: var(--normal-color);
+}
+
+#days div.has-event > div:hover {
+    scale: 1.1;
+}
+
+#event-form {
+    display: block;
+    position: relative;
+    height: 85%;
+    translate: 0 -.4%;
+}
+
+#event-form button {
+    position: absolute;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom right, #f8f8f8, #eaeaea);
+    cursor: pointer;
+    border: none;
+    right: 0;
+    bottom: 0;
+    transition: box-shadow 0.2s, translate 0.2s;
+}
+
+#event-form button:hover {
+    translate: -2% -2%;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+}
+
+#event-form fieldset {
+    display: grid;
+    border: none;
+    width: 50%;
+    height: 70%;
+    margin: 1rem;
+    gap: .5rem;
+    position: absolute;
+    top: 2rem;
+    right: .5rem;
+}
+
+#event-form fieldset input {
+    display: none;
+}
+
+#event-form fieldset label{
+    display: grid;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    transition: box-shadow 0.2s, translate 0.2s, font-weight 0.2s;
+}
+
+#event-form fieldset label:hover {
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    translate: -2% -2%;
+}
+
+#event-form fieldset label[for="urgent"] {
+    position: absolute;
+    top: 0;
+    right: -.5rem;
+    height: 100%;
+    background-color: var(--urgent-color);
+}
+
+#event-form fieldset label[for="important"] {
+    background-color: var(--important-color);
+}
+
+#event-form fieldset label[for="normal"] {
+    background-color: var(--normal-color);
+}
+
+ion-icon[name=checkmark-circle], ion-icon[name='ellipse-outline'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: .5rem;
+    justify-self: center;
+    font-size: 1.2rem;
+}  
+
+fieldset input[type='radio'][name='priority']:checked + label{
+    animation: priority .6s;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    translate: -2% -2%;
+    font-weight: 600;
+}
+
+.normal {
+    background-color: var(--normal-color);
+}
+.important {
+    background-color: var(--important-color);
+}
+.urgent {
+    background-color: var(--urgent-color);
+}
+
+#event-input {
+    margin: 1rem;
+    font-size: 1.8rem;
+    padding: .5rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 40%;
+}
+
+#event-description {
+    margin: 1rem;
+    font-size: 1.2rem;
+    padding: .5rem;
+    border-radius: 10px;
+    width: 40%;
+    height: 52%;
+    border: none;
+    outline: none;
+    resize: none;
+} 
+
+#held {
+    background-color: red;
 }
