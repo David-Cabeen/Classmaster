@@ -1,0 +1,447 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&display=swap");
+
+:root {
+    --urgent-color: hsl(11, 80%, 65%);
+    --important-color: hsl(175, 40%, 45%);
+    --normal-color: hsl(255, 75%, 70%);
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+}
+
+@keyframes priority {
+    0% {
+        transform: perspective(100px) rotateX(var(0)) rotateZ(var(0));
+    }
+    25% {
+        transform: perspective(100px) rotateX(var(--rotateX)) rotateZ(var(--rotateY));
+    }
+    100% {
+        transform: perspective(100px) rotateX(var(0)) rotateZ(var(0));
+    }
+}
+
+@keyframes tween {
+    0% {
+        rotate: 0deg;
+    }
+    33.3% {
+        rotate: 1deg;
+    }
+    66.6% {
+        rotate: -1deg;
+    }
+    100% {
+        rotate: 0deg;
+    } 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", serif;
+  user-select: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4f3;
+    color: rgb(20, 20, 20);
+}
+
+.container {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #eee;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+    position: absolute;
+    background: linear-gradient(to bottom right, #e8e8e8, #ddd);
+}
+
+.navigation {
+    width: 100%;
+    height: 15%;
+    background-color: #889a99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation h1 {
+    font-size: 3rem;
+}
+
+#calendar {
+    transition: width 0.3s;
+    width: 65%;
+    height: 100%;
+    color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0.5rem;
+}
+
+.weekdays, #days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+    text-align: center;
+    gap: .5rem;
+}
+
+#days div {
+    position: relative;
+    cursor: pointer;
+    aspect-ratio: 1;
+    transition: translate 0.3s, box-shadow 0.3s, scale 0.3s;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+#days > div:hover {
+    translate: -2% -2%;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    
+}
+
+#days div.fade {
+    color: #bbb;
+    cursor: default;
+    translate: 0 0;
+    box-shadow: none;
+}
+
+.selected {
+    translate: -2% -2%;
+    scale: 1.02;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    animation: tween ease-in-out 5s infinite;
+}
+
+#days div.today::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 1;
+    margin: .5rem;
+    border-radius: 50%;
+    background-color: hsl(220, 70%, 70%);
+}
+
+ion-icon {
+    font-size: 3rem;
+    cursor: pointer;
+    margin: 0 1rem;
+    background-color: transparent;
+    transition: scale 0.3s, filter 0.3s;
+}
+
+ion-icon:hover:is([name="arrow-forward"], [name="arrow-back"], [name="close"]) {
+    scale: 1.1;
+    filter: drop-shadow(0 0 10px rgb(0, 0, 0, 0.3));
+}
+
+#month-year {
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+#events hr {
+    width: 100%;
+    height: 3px;
+    background-color: #ddd;
+    border: none;
+}
+
+#events {
+    display: block;
+    transition: translate 0.3s;
+    position: absolute;
+    width: 33%;
+    height: 85%;
+    bottom: 0;
+    right: 0;
+    translate: 100% 0;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+#day-number {
+    margin-top: .25rem;
+    margin-left: .25rem;
+}
+
+#distance {
+    margin: 0 .25rem;
+    translate: 0 -25%;
+}
+
+#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2.8rem;
+    margin: .5rem;
+    border-radius: 0 0 0 15px;
+}
+
+#event-adder {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    background-color: #76a1ea;
+    cursor: pointer;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    transition: scale 0.3s;
+}
+
+#event-adder:hover {
+    scale: 1.05;
+}
+
+#overlay {
+    display: none;
+    opacity: 0;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#event-window {
+    overflow: hidden;
+    opacity: 0;
+    z-index: 200;
+    display: none;
+    transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+    position: fixed;
+    width: 60%;
+    height: 75%;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+}
+
+#event-window h1 {
+    margin: 1rem;
+    text-align: center;
+}
+
+#close-event {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 3.5rem;
+    margin: .5rem;
+}
+
+#events h2 {
+    margin: .5rem;
+}
+
+#event-list div ion-icon {
+    margin-top: .5rem;
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#event-list div{
+    position: relative;
+    border-radius: 5px;
+    height: 25%;
+    width: 95%;
+    margin-bottom: .5rem;
+}
+
+
+#event-list div p {
+    margin: 0 .5rem;
+}
+
+#event-list div h3 {
+    margin: .5rem;
+}
+
+#event-list {
+    margin: 0 .5rem;
+    height: 65%;
+    display: block;
+}
+
+ion-icon[name="trash-outline"]:hover {
+    color: red;
+}
+
+#days div.has-event > div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    aspect-ratio: 1;
+    margin: .5rem;
+    border-radius: 50%;
+    transition: scale 0.2s;
+}
+
+#days div.has-event.urgent > div {
+    background-color: var(--urgent-color);
+}
+#days div.has-event.important > div {
+    background-color: var(--important-color);
+}
+#days div.has-event.normal > div {
+    background-color: var(--normal-color);
+}
+
+#days div.has-event > div:hover {
+    scale: 1.1;
+}
+
+#event-form {
+    display: block;
+    position: relative;
+    height: 85%;
+    translate: 0 -.4%;
+}
+
+#event-form button {
+    position: absolute;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom right, #f8f8f8, #eaeaea);
+    cursor: pointer;
+    border: none;
+    right: 0;
+    bottom: 0;
+    transition: box-shadow 0.2s, translate 0.2s;
+}
+
+#event-form button:hover {
+    translate: -2% -2%;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+}
+
+#event-form fieldset {
+    display: grid;
+    border: none;
+    width: 50%;
+    height: 70%;
+    margin: 1rem;
+    gap: .5rem;
+    position: absolute;
+    top: 2rem;
+    right: .5rem;
+}
+
+#event-form fieldset input {
+    display: none;
+}
+
+#event-form fieldset label{
+    display: grid;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    transition: box-shadow 0.2s, translate 0.2s, font-weight 0.2s;
+}
+
+#event-form fieldset label:hover {
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    translate: -2% -2%;
+}
+
+#event-form fieldset label[for="urgent"] {
+    position: absolute;
+    top: 0;
+    right: -.5rem;
+    height: 100%;
+    background-color: var(--urgent-color);
+}
+
+#event-form fieldset label[for="important"] {
+    background-color: var(--important-color);
+}
+
+#event-form fieldset label[for="normal"] {
+    background-color: var(--normal-color);
+}
+
+ion-icon[name=checkmark-circle], ion-icon[name='ellipse-outline'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: .5rem;
+    justify-self: center;
+    font-size: 1.2rem;
+}  
+
+fieldset input[type='radio'][name='priority']:checked + label{
+    animation: priority .6s;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
+    translate: -2% -2%;
+    font-weight: 600;
+}
+
+.normal {
+    background-color: var(--normal-color);
+}
+.important {
+    background-color: var(--important-color);
+}
+.urgent {
+    background-color: var(--urgent-color);
+}
+
+#event-input {
+    margin: 1rem;
+    font-size: 1.8rem;
+    padding: .5rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 40%;
+}
+
+#event-description {
+    margin: 1rem;
+    font-size: 1.2rem;
+    padding: .5rem;
+    border-radius: 10px;
+    width: 40%;
+    height: 52%;
+    border: none;
+    outline: none;
+    resize: none;
+} 
+
+#held {
+    background-color: red;
+}

@@ -6,8 +6,11 @@
     <title>Registro e inicio</title>
     <link rel="stylesheet" href="inicio.css">
     <script src="inicio.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
 </head>
 <body>
+    <div id="overlay"></div>
     <section class="container">
         <section class="container-form">
             <form class="sign-in">
@@ -21,10 +24,11 @@
                 <span>Use su correo y contraseña</span>
                 <section class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" placeholder="Email">
+                    <input type="email" required placeholder="Email">
                 </section>
                 <section class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required class="password" placeholder="Password">
                     <input type="password" class="password" placeholder="Password">
                     <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 </section>
@@ -45,11 +49,12 @@
                 <span>Use su correo electronico para registrarse</span>
                 <section class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Nombre">
+                    <input type="text" id="name" placeholder="Nombre">
                 </section>
                 <section class="container-input">
                     <ion-icon name="layers-outline"></ion-icon>
                       <select id="opciones">
+                        <option selected disabled>Seleccione una opción</option>
                         <option style="color: rgb(120, 120, 120);" selected disabled>Seleccione una opción</option>
                         <option value="opcion1">Docente</option>
                         <option value="opcion2">Acudiente</option>
@@ -58,7 +63,7 @@
                 </section>
                 <section class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" placeholder="Email">
+                    <input id="email" type="text" placeholder="Email">
                 </section>
                 <section class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
@@ -81,13 +86,17 @@
                 <button  class="button" id="btn-sign-in">Iniciar sesión</button>
             </section>
         </section>
+    </section>
+    <section id="feedback-window">
+        <h3><span>Parece que hubo un error</span></h3>
+        <ion-icon id="feedback-close" name="close-circle"></ion-icon>
+        <p id="feedback"></p>
+    </section>
 
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    
-    
 
 </body>
 </html>
