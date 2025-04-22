@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const marker = e.target
                     if (marker) {
                         marker.addEventListener('mousedown', function () {
-                            marker.classList.add('held');
+                            marker.setAttribute('id','held');
                         });
                         marker.addEventListener('mouseup', function () {
-                            marker.classList.remove('held');
+                            marker.setAttribute('id','');
                         });
                     };
                 };           
@@ -175,11 +175,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (div[date - 1]) {
             div[date - 1].classList.remove('normal', 'important', 'urgent');
             if (hasUrgent) {
-                div[date - 1].classList.add('urgent');
+                const div = document.createElement('div');
+                div.classList.add('urgent');
+                div[date - 1].appendChild(div)
+                console.log('Urgente')
             } else if (hasImportant) {
-                div[date - 1].classList.add('important');
+                const div = document.createElement('div');
+                div.classList.add('important');
+                div[date - 1].appendChild(div)
+                console.log('Importante')
             } else if (hasNormal) {
-                div[date - 1].classList.add('normal');
+                const div = document.createElement('div');
+                div.classList.add('normal');
+                div[date - 1].appendChild(div)
+                console.log('Normal')
             }
         }
     }
