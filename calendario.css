@@ -27,6 +27,9 @@
     #days div {
         font-size: .8rem !important;
     }
+    #event-adder {
+        padding: .2rem !important;
+    }
 }
 
 @media (max-width: 300px){
@@ -116,7 +119,7 @@ body {
 #calendar {
     transition: width 0.3s;
     aspect-ratio: 1/1.34;
-    width: min(65%);
+    width: 65%;
     color: rgb(34, 34, 34);
     display: flex;
     flex-direction: column;
@@ -236,7 +239,7 @@ ion-icon:hover:is([name="arrow-forward"], [name="arrow-back"], [name="close"]) {
     margin: 1rem;
     background-color: #76a1ea;
     cursor: pointer;
-    padding: min(1rem, 2%);
+    padding: 1rem;
     border: none;
     border-radius: 10px;
     transition: scale 0.3s;
