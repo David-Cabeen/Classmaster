@@ -1,0 +1,149 @@
+body{
+    font-family: "Outfit", sans-serif; /*fuente de la letra*/
+}
+
+/*contenido del navbar*/
+.logo1{
+    width: 9%;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem 2rem;
+    height: 70px;
+}
+
+.navbar .logo {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    height: auto;
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: #555;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    width: 15%;
+
+
+}
+    
+.titulo_de_logo{
+    color: white;
+    font-size: 1em;
+    margin-left: -50%;
+
+}
+.section1{
+    justify-content: end;
+}
+/*contenido del quienes somos*/
+.quienessomos1{
+    margin-top: 7%;
+    background-color: #cccccc;
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+.imagen1{
+    border-radius: 3%;
+    transition: transform 0.3s ease;
+}
+.imagen1:hover{
+    transform: scale(1.05);
+}
+.quienessomos{
+    margin-left: 3%;
+    margin-top: -5%;
+    font-size: 140%;
+    width: 50%;
+    text-align:left;
+}
+.section2{
+    padding-top: 8%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 140%;
+    margin-bottom: 10%;
+}
+.titulo{
+    transition: transform 0.3s ease;
+}
+.titulo:hover{
+    transform: scale(1.05) ;
+}
+.titulo1{
+    transition: transform 0.3s ease;
+}
+.titulo1:hover{
+    transform: scale(1.15) ;
+}
+/*contenido del footer*/
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenido del footer */
+.footer-content h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    font-size: 14px;
+   
+}
+
+.todo-footer{
+    transition: transform 0.3s ease;
+}
+
+.todo-footer:hover{
+    transform: scale(1.05);
+}
+
+
+
+
+
+.footer-reglas{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+    

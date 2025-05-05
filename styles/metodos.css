@@ -1,0 +1,55 @@
+body{
+    font-family: "Outfit", sans-serif;
+}
+.cuadros-de-metodos{
+display: flex;
+  flex-direction: column; /* Para que se acomoden verticalmente */
+  align-items: center;     /* Para centrar horizontalmente */
+  justify-content: center; /* Opcional: centra verticalmente también */
+}
+.metodo-pomodoro{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 60%;
+    height: 300%;
+    background-color: #d3d3d3;    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.metodo-pomodoro:hover{
+    transform: scale(1.05);
+}
+
+
+
+.metodo-cornell{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 60%;
+    height: 300%;
+    background-color: #d3d3d3;    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.metodo-cornell:hover{
+    transform: scale(1.05);
+}
+
+.metodo-leitner{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 60%;
+    height: 300%;
+    background-color: #d3d3d3;    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.metodo-leitner:hover{
+    transform: scale(1.05);
+}

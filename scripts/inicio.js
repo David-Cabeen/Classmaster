@@ -70,7 +70,7 @@ signup.addEventListener("submit", (e) => {
     }
     else {
         if(checkEmailValidity(emailInput.value) == "" && checkPasswordValidity(passwords[1].value) == ""){
-            console.log("Inicio de sesión exitoso");
+            window.location.assign("home.html");
         } 
         else {
             feedbackWindow.style.display = "flex";

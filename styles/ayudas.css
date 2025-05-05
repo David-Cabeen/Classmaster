@@ -1,0 +1,347 @@
+
+.titulo_de_logo{
+    color: white;
+    font-size: 1em;
+    margin-left: -50%;
+}
+.section1{
+    justify-content: end;
+
+}
+body{
+    font-family: "Outfit", sans-serif;
+}
+
+/* titulo de la pagina*/
+.tituloayudas{ 
+    width: 100%;
+    margin-left: 2%;
+    font-size: 300%;
+    transition: transform 0.3s ease;
+}
+.tituloayudas:hover{
+    transform: scale(1.01); /*que tan grande se verá al pasar el cursor*/
+}
+/*texto de introducción*/
+.textoayudas{
+    margin-left: 2%;
+    color: black;
+    text-decoration:underline;
+    font-size: 100%;
+}
+/*cuadro de matemática*/
+.artmatematicas{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 40%;
+    height: 500%;
+    background-color: #d3d3d3;
+    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+}
+.tartmat{
+    font-size: 150%;
+}
+.linkalex{ /*estilo general de todos los botónes de link*/
+    color: white; /*color de la letra*/
+    margin-top: 2%; /*el espacio que habrá hacia arriba*/
+    margin-bottom: -2%; /*el espacio que habrá hacia abajo*/
+    background-color: #9b9b9b; /*color del fonfo*/
+    padding: 1% 3%; /*el espacio que habrá al rededor del link*/
+    border: 3px solid #666666; /*tamaño y color del borde*/
+    border-radius: 5%; /*que tan redondas serán las esquinas*/
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%; /*tamaño de la letra*/
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease; /*la velocidad de la transición*/
+    transition: transform 0.3s ease; /*la velocidad de la transición*/
+}
+.linkalex:hover {
+    background-color: #666666; /*el color en el que se transformará*/
+    transform: scale(1.2); /*que tan grande se verá al pasar el cursor*/
+}
+.linkdaniel{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkdaniel:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+.linkphotomath{
+    text-align: center;
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkphotomath:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+/*cuadro de bioquímica*/
+.artbioquimica{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 40%;
+    height: 380%;
+    background-color: #d3d3d3;
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+}
+.tartbioqui{
+    font-size: 150%;
+}
+.linkciencia{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkciencia:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+.linkyamil{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkyamil:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+/*cuadro de historia y sociales*/
+.artsociales{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 40%;
+    height: 380%;
+    background-color: #d3d3d3;    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+}
+.tartsociales{
+    font-size: 150%;
+}
+.linkhistoria{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkhistoria:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+.linkmemorias{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkmemorias:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+/*cuadro de español*/
+.artespañol{
+    border:6px solid #383838;
+    border-radius: 5%;
+    width: 40%;
+    height: 380px;
+    background-color: #d3d3d3;    
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center;
+}
+.tartespañol{
+    font-size: 150%;
+}
+.linkespañol{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkespañol:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+/*posiciones en la tabla*/
+.losart1{
+    justify-content: space-around; /*para que haya espacio dentro de los objetos del contenedor*/
+    display: flex; /*para que los elementos se situen en el espacio del contenedor*/
+}
+.losart2{
+    justify-content: space-around;
+    display: flex;
+}
+/*tabla de mas asignaturas*/
+.artmasasig{
+    background-color: #d3d3d3 ;
+    width: 85%;
+    border:6px solid #383838;
+    border-radius: 5%;
+    margin-bottom: 5%;
+    padding: 1%;
+    text-align: center; /*para que el contenido quede centrado*/
+    margin-left: 7%;
+}
+.tartmasasig{
+    font-size: 150%;
+}
+.links{
+    font-size: 150%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3%;
+}
+.divsusi{
+    width: 30%;
+}
+.divavila{
+   width: 30%;
+}
+.divmayte{
+    width: 30%;
+ }
+ .linksusi{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linksusi:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+
+}
+.linkavila{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid #666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkavila:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+.linkmayte{
+    color: white;
+    margin-top: 2%;
+    margin-bottom: -2%;
+    background-color: #9b9b9b;
+    padding: 1% 3%;
+    border: 3px solid#666666;
+    border-radius: 5%;
+    text-decoration: none; /*para que no aparezca la linea debajo de la palabra linkeada*/
+    cursor: pointer; /*al pasar el cursor se verá como la manito*/
+    font-size: 68%;
+    display: inline-block;   /* Asegura que se vea como un botón */
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.linkmayte:hover {
+    background-color: #666666;
+    transform: scale(1.2);
+}
+/*logo de youtube en cada botón de link*/
+.logoyoutube{
+    width: 30%;      
+}
+footer {
+    background-color: #9b9b9b;
+    color: #000000;
+    text-align: center;
+    padding: 15px;
+  }
