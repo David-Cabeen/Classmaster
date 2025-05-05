@@ -1,86 +1,86 @@
-const timeDisplay = document.getElementById('time');
-const pauseButton = document.getElementById('pause');
-const startButton = document.getElementById('start');
-const resetButton = document.getElementById('reset');
-const workTimeInput = document.getElementById('work-time');
-const breakTimeInput = document.getElementById('break-time');
-const controlsToggle = document.getElementById('controls-toggle');
-const controls = document.querySelector('.hidden-controls');
-let timer = null; //Variable para acceder al temporizador globalmente
-let timeLeft = 0;
-let isPaused = null; // Variable es null al empezar y luego se pone en verdadero
-let currentTime = null;
-let active = false; // Variable para controlar el estado de los controles
-let rotateValue = -360; // Valor de rotación inicial para el botón de reinicio
-let circleAngle = 100; // Variable para el ángulo del círculo
-let cyclesCompleted = 0 // Variable para calcular los ciclos
-let circleInterval = null // Variable para detener el intervalo globalmente
+const timeDisplay = document.getElementById('time'),
+pauseButton = document.getElementById('pause'),
+startButton = document.getElementById('start'),
+resetButton = document.getElementById('reset'),
+workTimeInput = document.getElementById('work-time'),
+breakTimeInput = document.getElementById('break-time'),
+controlsToggle = document.getElementById('controls-toggle'),
+controls = document.querySelector('.hidden-controls');
+let timer = null, //Variable para acceder al temporizador globalmente
+timeLeft = 0,
+isPaused = null, // Variable es null al empezar y luego se pone en verdadero
+currentTime = null,
+active = false, // Variable para controlar el estado de los controles
+rotateValue = -360, // Valor de rotación inicial para el botón de reinicio
+circleAngle = 100, // Variable para el ángulo del círculo
+cyclesCompleted = 0, // Variable para calcular los ciclos
+updateCircle = null; // Variable para detener el intervalo globalmente
 
+// Inicio del timer
 startButton.addEventListener('click', function () {
     if (isPaused == null){
         timeLeft = workTimeInput.value * 60;
+        circleAnim(workTimeInput.value);
     } else if (isPaused == true) {
         timeLeft = currentTime;
-    }
+        circleAnim(currentTime / 60);
+    } else return;
     isPaused = false
-    if(cyclesCompleted==0){
-        
-        circleAnim()
-        timer = setInterval(() => {
-            if (timeLeft == 0){
-                document.querySelector(':root').style.setProperty('--primary-color', '#0099ff')
+        timer = setInterval(() => { //Ciclo del temporizador
+            if (timeLeft == 0 && circleAngle == 0){
                 timeLeft = breakTimeInput.value * 60;
+                document.querySelector(':root').style.setProperty('--primary-color', '#0099ff');
                 cyclesCompleted ++;
-                circleText.textContent = 'Es hora de \n un descanso';
-                showCircleText();
-                circleAnim();
             }
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
             timeLeft --;
         }, 1000);
-    };
 });
 
-function showCircleText() {
-    circleText.style.opacity = 1
-    setTimeout(() => {
-        circleText.style.opacity = 0
-    }, 2000);
+// Animación del círculo
+function circleAnim(total) {
+    const startTime = performance.now();// Busca el tiempo actual
+    const totalTime = total * 60 * 100;
+    let pauseTime = 0;
+    if (isPaused == true) {
+        pauseTime = performance.now() - startTime;
+    };
+    updateCircle = () => {
+        const elapsedTime = (performance.now() - startTime) - pauseTime; // Calcula el tiempo transcurrido
+        circleAngle = ((totalTime * 100)/(workTimeInput.value*60*100)) - ((elapsedTime / totalTime)*10);
+        document.querySelector(":root").style.setProperty("--circleAngle", `${circleAngle}%`);
+
+        if (circleAngle !== 0 && isPaused == false) {
+            requestAnimationFrame(updateCircle); // Continua la animación del círculo
+        } else return;
+    }
+
+    requestAnimationFrame(updateCircle); // Empieza la animación del círculo
 }
 
-function circleAnim() {
-    let localTime = timeLeft * 100
-    setTimeout(() => {
-        circleInterval = setInterval(() => {
-            if(circleAngle == 0) {
-                clearInterval(circleInterval)
-            }
-            circleAngle = localTime  / (workTimeInput.value * 60);
-            localTime --
-            document.querySelector(":root").style.setProperty("--circleAngle", `${circleAngle}%`);
-        }, 10);
-    }, 1000);
-}
-
+// Botón de pausa
 pauseButton.addEventListener('click', function () {
     if (timer){
         clearInterval(timer);
-        clearInterval(circleInterval);
+        cancelAnimationFrame(updateCircle);
         currentTime = timeLeft;
         isPaused = true;
     }
 });
 
+// Botón de reinicio
 resetButton.addEventListener('click', function () {
     if (timeLeft !== 0) {
-        clearInterval(circleInterval);
         clearInterval(timer);
+        cancelAnimationFrame(updateCircle)
         resetButton.style.rotate = `${rotateValue}deg`;
         rotateValue -= 360;
+        // Llama animaciones de reinicio
         circleRotateBack();
         timeBack();
+        isPaused = null;
     }
 });
 
@@ -100,8 +100,6 @@ function circleRotateBack() {
 }
 
 function timeBack() {
-    let interval = (100 - (timeLeft  / (workTimeInput.value * 60))) / 100;
-    console.log(interval)
     setInterval((timeBack) => {
         if (timeLeft >= workTimeInput.value * 60) {
             clearInterval(timeBack);
@@ -112,7 +110,7 @@ function timeBack() {
             const seconds = timeLeft % 60;
             timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         };
-    }, interval);
+    }, 10);
 }
 
 controlsToggle.addEventListener('click', function() {
@@ -144,6 +142,9 @@ controls.addEventListener('wheel', function (e) {
     const minValue = 1;
     const maxValue = 60;
     const p = controls.parentElement.querySelector('p');
+    currentTime = null;
+    isPaused = null;
+    document.querySelector(":root").style.setProperty("--circleAngle", `100%`);
 
     let currentValue = parseInt(e.target.value);
 
