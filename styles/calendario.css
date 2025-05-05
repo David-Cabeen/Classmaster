@@ -54,18 +54,12 @@
 
 /*Animacion de rotacion de dia seleccionado */
 @keyframes tween {
-    0% {
+    from. {
         rotate: 0deg;
     }
-    33.3% {
+    to {
         rotate: 1deg;
     }
-    66.6% {
-        rotate: -1deg;
-    }
-    100% {
-        rotate: 0deg;
-    } 
 }
 
 /*Estilo por defecto para toda la pagina */
@@ -159,7 +153,7 @@ body {
     translate: -2% -2%;
     scale: 1.02;
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
-    animation: tween ease-in-out 5s infinite;
+    animation: tween ease-in-out 5s infinite alternate;
 }
 
 #days div.today::after {
