@@ -71,7 +71,7 @@ signup.addEventListener("submit", (e) => {
     else {
         if(checkEmailValidity(emailInput.value) == "" && checkPasswordValidity(passwords[1].value) == ""){
             window.location.assign("home.html");
-        } 
+        }
         else {
             feedbackWindow.style.display = "flex";
             overlay.style.display = "block";
@@ -85,6 +85,17 @@ signup.addEventListener("submit", (e) => {
         };
     }
 });
+
+signin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (checkAccount()) {
+        window.location.assign('home.html');
+    };
+});
+
+function checkAccount() {
+    return true; // Cambiar esto para agregar validacion de datos dentro de una BBDD
+};
 
 feedbackClose.addEventListener("click", () => {
     overlay.style.opacity = 0; 
