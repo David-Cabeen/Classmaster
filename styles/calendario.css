@@ -54,7 +54,7 @@
 
 /*Animacion de rotacion de dia seleccionado */
 @keyframes tween {
-    from. {
+    from {
         rotate: 0deg;
     }
     to {
