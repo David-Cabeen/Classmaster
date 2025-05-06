@@ -55,7 +55,7 @@
 /*Animacion de rotacion de dia seleccionado */
 @keyframes tween {
     from {
-        rotate: 0deg;
+        rotate: -1deg;
     }
     to {
         rotate: 1deg;
@@ -153,7 +153,7 @@ body {
     translate: -2% -2%;
     scale: 1.02;
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.3), inset 2px 2px 5px rgb(255, 255, 255, 0.8);
-    animation: tween ease-in-out 5s infinite alternate;
+    animation: tween ease-in-out 2s infinite alternate;
 }
 
 #days div.today::after {

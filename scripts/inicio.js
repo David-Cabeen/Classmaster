@@ -9,8 +9,7 @@ const feedback = document.getElementById("feedback");
 const feedbackWindow = document.getElementById("feedback-window");
 const overlay = document.getElementById("overlay");
 const emailInput = document.getElementById("email");
-const nameInput = document.getElementById("name");
-const roleInput = document.getElementById("opciones");
+const numberInput = document.getElementById("number");
 const feedbackClose = document.getElementById("feedback-close");
 
 btnsignin.addEventListener("click", () => {
@@ -59,7 +58,7 @@ const checkEmailValidity = (email) => {
 
 signup.addEventListener("submit", (e) => {
     e.preventDefault();
-    if(!emailInput.value || !passwords[1].value || !nameInput.value || roleInput.value == "Seleccione una opción"){
+    if(!emailInput.value || !passwords[1].value || !numberInput.value){
         feedbackWindow.style.display = "flex";
         overlay.style.display = "block";
         setTimeout(() => {

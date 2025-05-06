@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.getElementById('close'),
     distance = document.getElementById('distance'),
     events = document.getElementById('events'),
