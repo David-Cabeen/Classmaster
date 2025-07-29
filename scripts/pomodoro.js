@@ -64,7 +64,7 @@ startButton.addEventListener('click', function () {
         const seconds = timeLeft % 60;
         timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         timeLeft--;
-    }, 20);
+    }, 1000);
 });
 
 function circleAnim(total) {
