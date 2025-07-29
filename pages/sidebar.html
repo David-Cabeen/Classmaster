@@ -1,43 +1,109 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles/sidebar.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Sidebar Menu</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/sidebar.css">
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="search">
-        <ion-icon  class="search-icon" name="search-outline"></ion-icon>
-        <input type="text" placeholder="Busca">
-    </div>
-    <div class="search-background">
-        
-    </div>
+  <!-- Sidebar navigation menu -->
+  <nav class="sidebar close">
+    <!-- Sidebar header containing logo and toggle button -->
     <header>
-        <div class="Left">
-            <div class="menu-btn">
-                <ion-icon class="menu-btn" name="accessibility-outline"></ion-icon>
-
-
-            </div>
-            <img class="brand-logo" src="image.png" alt="">
-            <span class="brand-name">ClassMaster</span>
-
+      <div class="image-text">
+        <span class="image">
+          <img src="logo.png" alt="Logo">
+        </span>
+        <div class="text logo-text">
+          <span class="name">Codinglab</span>
+          <span class="profession">Web developer</span>
         </div>
-
-        <div class="Right">
-            <ion-icon  class="search-icon" name="search-outline"></ion-icon>
-            <ion-icon name="help-outline"></ion-icon>
-            <img class="user-img" src="image.png" alt="">
-
-        </div>
+      </div>
+      <i class='bx bx-chevron-right toggle'></i>
     </header>
-  
-   <script src="sidebar.js"></script>
-   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+    <!-- Sidebar menu items -->
+    <div class="menu-bar">
+      <div class="menu">
+        <!-- Search box within the sidebar -->
+        <li class="search-box">
+          <i class='bx bx-search icon'></i>
+          <input type="text" placeholder="Search...">
+        </li>
+        <!-- List of menu links -->
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">Revenue</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bell icon'></i>
+              <span class="text nav-text">Notifications</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-pie-chart-alt icon'></i>
+              <span class="text nav-text">Analytics</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-heart icon'></i>
+              <span class="text nav-text">Likes</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-wallet icon'></i>
+              <span class="text nav-text">Wallets</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom content of the sidebar -->
+      <div class="bottom-content">
+        <li>
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+        <!-- Dark mode toggle switch -->
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Dark mode</span>
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content section -->
+  <section class="home">
+    <div class="text">Dashboard Sidebar</div>
+  </section>
+
+  <!-- JavaScript file -->
+  <script src="/scripts/sidebar.js"></script>
 </body>
 </html>
