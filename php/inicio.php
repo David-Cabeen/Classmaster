@@ -7,16 +7,13 @@ $db   = 'DB_NAME';
 $user = 'DB_USER';
 $pass = 'DB_PASS';
 
-// Conexión a la base de datos
 $conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
-    // Si hay error de conexión, se retorna un mensaje de error
     echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos.']);
     exit;
 }
 
-// Obtiene los datos enviados por POST
 $id = $_POST['id'] ?? '';
 $password = $_POST['password'] ?? '';
 
