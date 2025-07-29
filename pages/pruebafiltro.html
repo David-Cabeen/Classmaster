@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="../styles/pruebafiltro.css">
+</head>
+<body>
+
+    <h2>Lista de Productos</h2>
+
+    <label for="filtroMateria">Filtrar por Materia: </label>
+    <select id="filtroMateria" onchange="filtrarTabla()">
+        <option value="Todos">Todos</option>
+        <option value="Español">Español</option>
+        <option value="Inglés">Inglés</option>
+        <option value="Programación">Programación</option>
+        <option value="Matemática">Matemática</option>
+    </select>
+
+    <table id="tablaProductos">
+        <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Materia</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Examen del romanticismo</td>
+                <td>Español</td>
+                <td>Superior</td>
+            </tr>
+            <tr>
+                <td>Página 45 - 60</td>
+                <td>Inglés</td>
+                <td>Bajo</td>
+            </tr>
+            <tr>
+                <td>Taller Excel</td>
+                <td>Programación</td>
+                <td>Alto</td>
+            </tr>
+            <tr>
+                <td>Taller bases de datos</td>
+                <td>Programación</td>
+                <td>Básico</td>
+            </tr>
+            <tr>
+                <td>Taller ecuación cuadrática</td>
+                <td>Matemática</td>
+                <td>Básico</td>
+            </tr>
+            <tr>
+                <td>Centro literario</td>
+                <td>Español</td>
+                <td>Bajo</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filtrarTabla() {
+    let filtro = document.getElementById("filtroMateria").value;
+    let filas = document.querySelectorAll("#tablaProductos tbody tr");
+
+    filas.forEach(fila => {
+        let materia = fila.cells[1].textContent; // Obtiene la materia de la segunda columna
+        fila.style.display = (filtro === "Todos" || materia === filtro) ? "" : "none";
+    });
+}
+
+    </script>
+
+</body>
+</html>

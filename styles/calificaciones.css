@@ -1,0 +1,150 @@
+/* Variables CSS */
+:root {
+    --color-fondo: #ffffff;
+    --color-encabezado: #002952;
+    --color-hover-fila: #e2e8f0;
+    --color-boton-primario: #3b82f6;
+    --color-boton-primario-hover: #2563eb;
+    --color-boton-guardar: #10b981;
+    --color-boton-guardar-hover: #059669;
+    --color-boton-editar: #2563eb;
+    --color-boton-editar-hover: #1d4ed8;
+    --color-boton-borrar: #dc2626;
+    --color-boton-borrar-hover: #b91c1c;
+  }
+  
+  /* Estilos Generales */
+  body {
+    background-color: var(--color-fondo);
+    font-family: "Outfit", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 80%;  /* 80% del ancho de la pantalla */
+    margin: 0 auto;
+    padding: 2%;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2.5vw;  /* Fuente en función del ancho de la pantalla */
+    margin-bottom: 3%;
+  }
+  
+  .filter {
+    margin-bottom: 3%;
+  }
+  
+  .filter label {
+    display: block;
+    margin-bottom: 1%;
+    font-weight: bold;
+  }
+  
+  .filter select {
+    width: 100%;  /* 100% de ancho disponible */
+    padding: 2%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1.2em;  /* Un tamaño de fuente adecuado */
+  }
+  
+  /* Tabla */
+  .table-container {
+    overflow-x: auto;/*si el contenedor se extiende mas alla del ancho se desplaza automaticamente*/
+    margin-bottom: 3%;
+  }
+  
+  table {
+    width: 100%;  /* 100% de ancho de la pantalla */
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  thead tr {
+    background-color: var(--color-encabezado);
+    color: white;
+  }
+  
+  th, td {
+    padding: 3% 2%;  /* 3% de padding en vertical, 2% en horizontal */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+  }
+  
+  tbody tr:hover {
+    background-color: var(--color-hover-fila);
+  }
+  
+  input[type="text"], input[type="number"] {
+    width: 100%;  /* 100% de ancho disponible */
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1.1em;
+  }
+  
+  /* Botones */
+  button {
+    padding: 3% 6%;  /* 3% vertical, 6% horizontal */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 1.1em;  /* Tamaño de fuente adaptable */
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  .add-button {
+    text-align: right;
+    margin-top: 3%;
+  }
+  
+  .add-button button {
+    background-color: var(--color-boton-primario);
+    color: white;
+    width: 50%;  /* El botón ocupa la mitad del ancho disponible */
+  }
+  
+  .add-button button:hover {
+    background-color: var(--color-boton-primario-hover);
+  }
+  
+  .btn-guardar {
+    background-color: var(--color-boton-guardar);
+    color: white;
+  }
+  
+  .btn-guardar:hover {
+    background-color: var(--color-boton-guardar-hover);
+  }
+  
+  .btn-editar {
+    background-color: transparent;
+    color: var(--color-boton-editar);
+    margin-right: 2%;
+  }
+  
+  .btn-editar:hover {
+    color: var(--color-boton-editar-hover);
+    text-decoration: underline;
+  }
+  
+  .btn-borrar {
+    background-color: transparent;
+    color: var(--color-boton-borrar);
+  }
+  
+  .btn-borrar:hover {
+    color: var(--color-boton-borrar-hover);
+    text-decoration: underline;
+  }
+  

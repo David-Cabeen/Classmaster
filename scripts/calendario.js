@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.getElementById('close'),
     distance = document.getElementById('distance'),
     events = document.getElementById('events'),
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     dayDiv.classList.add('has-event');
                 } ;
             };
-            daysContainer.appendChild(dayDiv);
+            daysContainer.appendChild(dayDiv); // Lo embaraza
         };
 
         // Días del siguiente mes
@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const marker = e.target
                     if (marker) {
                         marker.addEventListener('mousedown', function () {
-                            marker.classList.add('held');
+                            marker.setAttribute('id','held');
                         });
                         marker.addEventListener('mouseup', function () {
-                            marker.classList.remove('held');
+                            marker.setAttribute('id','');
                         });
                     };
                 };           
@@ -175,11 +175,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (div[date - 1]) {
             div[date - 1].classList.remove('normal', 'important', 'urgent');
             if (hasUrgent) {
-                div[date - 1].classList.add('urgent');
+                const newdiv = document.createElement('div');
+                newdiv.classList.add('urgent');
+                div[date - 1].appendChild(newdiv)
+                console.log('Urgente')
             } else if (hasImportant) {
-                div[date - 1].classList.add('important');
+                const newdiv = document.createElement('div');
+                newdiv.classList.add('important');
+                div[date - 1].appendChild(newdiv)
+                console.log('Importante')
             } else if (hasNormal) {
-                div[date - 1].classList.add('normal');
+                const newdiv = document.createElement('div');
+                newdiv.classList.add('normal');
+                div[date - 1].appendChild(newdiv)
+                console.log('Normal')
             }
         }
     }

@@ -1,0 +1,86 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
+
+  #container {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .panel {
+    border: 0.5% solid #ccc;
+    padding: 1%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .superior, .inferior {
+    height: 20%;
+    background-color: #f0f0f0;
+  }
+
+  .medio {
+    flex: 1;
+    display: flex;
+    gap: 2%;
+    margin: 2% 0;
+  }
+
+  .medio .panel-35 {
+    width: 35%;
+    background-color: #e0f7fa;
+  }
+
+  .medio .panel-65 {
+    width: 65%;
+    background-color: #ffe0b2;
+  }
+
+  .contenido {
+    flex: 1;
+    overflow: auto;
+  }
+
+  
+
+  .bloqueado {
+    background-color: #e0e0e0 !important;
+  }
+
+  .buttons {
+    text-align: right;
+    margin-top: 1%;
+  }
+
+  .buttons button {
+    padding: 0.5% 1%;
+    font-size: 90%;
+    cursor: pointer;
+  }
+
+  .contenido {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    padding: 1%;
+  }
+  
+  .contenido:empty::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    pointer-events: none;
+  }
+  .contenido:focus {
+    outline: none;
+    background-color: transparent !important;
+  }

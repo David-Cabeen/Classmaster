@@ -9,8 +9,7 @@ const feedback = document.getElementById("feedback");
 const feedbackWindow = document.getElementById("feedback-window");
 const overlay = document.getElementById("overlay");
 const emailInput = document.getElementById("email");
-const nameInput = document.getElementById("name");
-const roleInput = document.getElementById("opciones");
+const numberInput = document.getElementById("number");
 const feedbackClose = document.getElementById("feedback-close");
 
 btnsignin.addEventListener("click", () => {
@@ -59,7 +58,7 @@ const checkEmailValidity = (email) => {
 
 signup.addEventListener("submit", (e) => {
     e.preventDefault();
-    if(!emailInput.value || !passwords[1].value || !nameInput.value || roleInput.value == "Seleccione una opción"){
+    if(!emailInput.value || !passwords[1].value || !numberInput.value){
         feedbackWindow.style.display = "flex";
         overlay.style.display = "block";
         setTimeout(() => {
@@ -70,8 +69,8 @@ signup.addEventListener("submit", (e) => {
     }
     else {
         if(checkEmailValidity(emailInput.value) == "" && checkPasswordValidity(passwords[1].value) == ""){
-            console.log("Inicio de sesión exitoso");
-        } 
+            window.location.assign("home.html");
+        }
         else {
             feedbackWindow.style.display = "flex";
             overlay.style.display = "block";
@@ -85,6 +84,37 @@ signup.addEventListener("submit", (e) => {
         };
     }
 });
+
+signin.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const idInput = signin.querySelector('input[type="number"]');
+    const passwordInput = signin.querySelector('input[type="password"]');
+    const result = await checkAccount(idInput.value, passwordInput.value);
+    if (result.success) {
+        window.location.assign('home.html');
+    } else {
+        feedbackWindow.style.display = "flex";
+        overlay.style.display = "block";
+        setTimeout(() => {
+            overlay.style.opacity = 1; 
+            feedbackWindow.style.right = "0.5rem"
+        }, 1);   
+        feedback.textContent = result.error || "Error desconocido.";
+    }
+});
+
+async function checkAccount(id, password) {
+    try {
+        const response = await fetch('../php/validate_account.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `id=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`
+        });
+        return await response.json();
+    } catch (err) {
+        return { success: false, error: "No se pudo conectar al servidor." };
+    }
+}
 
 feedbackClose.addEventListener("click", () => {
     overlay.style.opacity = 0; 
