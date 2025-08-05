@@ -85,37 +85,6 @@ signup.addEventListener("submit", (e) => {
     }
 });
 
-signin.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const idInput = signin.querySelector('input[type="number"]');
-    const passwordInput = signin.querySelector('input[type="password"]');
-    const result = await checkAccount(idInput.value, passwordInput.value);
-    if (result.success) {
-        window.location.assign('home.html');
-    } else {
-        feedbackWindow.style.display = "flex";
-        overlay.style.display = "block";
-        setTimeout(() => {
-            overlay.style.opacity = 1; 
-            feedbackWindow.style.right = "0.5rem"
-        }, 1);   
-        feedback.textContent = result.error || "Error desconocido.";
-    }
-});
-
-async function checkAccount(id, password) {
-    try {
-        const response = await fetch('../php/validate_account.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `id=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`
-        });
-        return await response.json();
-    } catch (err) {
-        return { success: false, error: "No se pudo conectar al servidor." };
-    }
-}
-
 feedbackClose.addEventListener("click", () => {
     overlay.style.opacity = 0; 
     feedbackWindow.style.right = "-20rem"

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro e inicio</title>
-    <link rel="stylesheet" href="../styles/inicio.css">
-    <script src="../scripts/inicio.js" defer></script>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
 </head>
@@ -13,49 +12,48 @@
     <div id="overlay"></div>
     <section class="container">
         <section class="container-form">
-            <form action="" class="sign-in">
+            <form action="../php/login.php" method="POST" class="sign-in">
                 <h2>Iniciar Sesión</h2>
-                <span>Use su ID y contraseña</span>
                 <section class="container-input">
                     <ion-icon name="id-card-outline"></ion-icon>
-                    <input type="number" placeholder="ID de Estudiante">
+                    <input type="number" name="id_estudiante" placeholder="ID de Estudiante" required>
                 </section>
                 <section class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" class="password" placeholder="Password">
+                    <input type="password" name="password" class="password" placeholder="Password" required>
                     <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 </section>
-                <a href="#">¿Haz olvidado tu contraseña?</a>
                 <button class="button">Iniciar Sesión</button>
             </form>
+            
         </section>
 
         <section class="container-form">
-            <form class="sign-up">
+            <form class="sign-up" action="../php/registro.php" method="POST">
                 <h2>Registrarse</h2>
-                <span>Use su correo electronico y datos del acudido para registrarse</span>
                 <section class="container-input">
-                    <ion-icon name="id-card-outline"></ion-icon>
-                    <input type="number" id="number" placeholder="ID de Estudiante">
+                  <ion-icon name="id-card-outline"></ion-icon>
+                  <input type="number" name="id" placeholder="ID de Estudiante" required />
                 </section>
                 <section class="container-input">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input id="email" type="text" placeholder="Email">
+                  <ion-icon name="mail-outline"></ion-icon>
+                  <input type="text" name="email" placeholder="Email" required />
                 </section>
                 <section class="container-input">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" class="password" placeholder="Password">
-                    <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                  <input type="password" name="contraseña" class="password" placeholder="Contraseña" required />
+                  <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
                 </section>
-                <button class="button">Registrarse</button>
-            </form>
+                <button class="button" type="submit" name="boton" value="crear" >Registrarse</button>
+             
+              
         </section>
 
         <section class="container-welcome">
             <section class="welcome-sign-up welcome">
                 <h3>¡Bienvenido!</h3>
                 <p>Ingrese los datos provistos por su institución. En caso de ser acudiente registrese abajo.</p>
-                <button class="button" id="btn-sign-up">Registrarse</button>
+                <button class="button" id="btn-sign-up" type="submit" name="boton" value="crear">Registrarse</button>
             </section>
             <section class="welcome-sign-in welcome">
                 <h3>¡Saludos!</h3>
@@ -63,6 +61,8 @@
                 <button  class="button" id="btn-sign-in">Iniciar sesión</button>
             </section>
         </section>
+    
+
     </section>
     <section id="feedback-window">
         <h3><span>Parece que hubo un error</span></h3>
@@ -71,7 +71,7 @@
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    </form>
 
 </body>
 </html>
